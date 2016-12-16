@@ -10,7 +10,6 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var uglify = require("gulp-uglify");
 var cssnano = require('gulp-cssnano');
-// var browserSync = require('browser-sync').create();
 
 function bundle (bundler) {
     return bundler
@@ -24,31 +23,32 @@ function bundle (bundler) {
         .pipe(gulp.dest('./dist/js'));
 }
 
-gulp.task('watch', function () {
+gulp.task('js-watch', function() {
     watchify.args.debug = true;
     var watcher = watchify(browserify('./public/js/main.js', watchify.args));
     bundle(watcher);
     watcher.on('log', gutil.log);
-    watcher.on('update', function () {
+    watcher.on('update', function() {
         bundle(watcher);
     });
 });
 
-gulp.task('js', function () {
+gulp.task('js-build', function() {
     return bundle(browserify('./public/js/main.js'));
 });
 
-gulp.task('sass', function () {
+gulp.task('sass-build', function() {
     return gulp.src('./public/css/*.scss')
       .pipe(sass().on('error', sass.logError))
+      .pipe(cssnano())
       .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('sass-watch', function () {
-    gulp.watch('./public/css/*.scss', ['sass']);
+gulp.task('sass-watch', function() {
+    gulp.watch('./public/css/*.scss', ['sass-build']);
 });
  
-gulp.task('minify-images', () => {
+gulp.task('minify-images', function() {
     return gulp.src('./public/images/*')
         .pipe(imagemin({
             progressive: true,
@@ -64,9 +64,10 @@ gulp.task("js-uglify", function() {
     .pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task("css-minify", function() {
-    return gulp.src('./dist/css/main.css')
-    .pipe(cssnano())
-    .pipe(gulp.dest('./dist/css'));
+gulp.task('watch', ['js-watch', 'sass-watch'], function() {
+    console.log(' --- Watching CSS & JS files --- ');
 });
 
+gulp.task('build', ['js-build', 'sass-build'], function() {
+    console.log(' --- Finished Building CSS & JS files --- ');
+});

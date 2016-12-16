@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch-js": "gulp watch",
-    "watch-scss": "gulp sass-watch",
-    "minify-css": "gulp css-minify",
+    "watch": "gulp watch",
+    "build": "gulp build",
     "uglify-js": "gulp js-uglify",
     "minify-images": "gulp minify-images"
   },
