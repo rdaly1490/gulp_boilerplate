@@ -1,1 +1,4 @@
 node_modules
+dist/css/main.css
+dist/js/bundle.js
+dist/js/main.js.map
