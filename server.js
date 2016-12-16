@@ -8,7 +8,6 @@ app.set('view engine', 'html');
 
 app.use(compress());
 app.use(express.static(__dirname + '/dist'));
-app.use(express.static(__dirname + '/node_modules'));
 
 var port = process.env.PORT || 3000;
 
