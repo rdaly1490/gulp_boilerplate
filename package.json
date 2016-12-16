@@ -7,7 +7,7 @@
     "start": "node server.js",
     "watch": "gulp watch",
     "build": "gulp build",
-    "minify": "gulp minify",
+    "minify": "gulp minify"
   },
   "author": "",
   "license": "ISC",
