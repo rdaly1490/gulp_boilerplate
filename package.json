@@ -5,13 +5,17 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "postinstall": "gulp build && gulp minify",
     "watch": "gulp watch",
     "build": "gulp build",
     "minify": "gulp minify"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "compression": "^1.6.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
     "babelify": "6.3.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
@@ -26,10 +30,5 @@
     "imagemin-pngquant": "^4.2.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
-  },
-  "dependencies": {
-    "compression": "^1.6.2",
-    "ejs": "^2.5.5",
-    "express": "^4.14.0"
   }
 }
