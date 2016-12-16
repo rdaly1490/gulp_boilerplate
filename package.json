@@ -4,11 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "gulp build && node server.js",
+    "start": "node server.js",
     "watch": "gulp watch",
     "build": "gulp build",
-    "uglify-js": "gulp js-uglify",
-    "minify-images": "gulp minify-images"
+    "minify": "gulp minify",
   },
   "author": "",
   "license": "ISC",

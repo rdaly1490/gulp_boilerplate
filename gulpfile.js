@@ -11,7 +11,7 @@ var pngquant = require('imagemin-pngquant');
 var uglify = require("gulp-uglify");
 var cssnano = require('gulp-cssnano');
 
-function bundle (bundler) {
+function bundle(bundler) {
     return bundler
         .transform(babelify)
         .bundle()
@@ -40,7 +40,6 @@ gulp.task('js-build', function() {
 gulp.task('sass-build', function() {
     return gulp.src('./public/css/*.scss')
       .pipe(sass().on('error', sass.logError))
-      .pipe(cssnano())
       .pipe(gulp.dest('./dist/css'));
 });
 
@@ -64,10 +63,20 @@ gulp.task("js-uglify", function() {
     .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task("css-minify", function() {
+    return gulp.src('./dist/css/main.css')
+    .pipe(cssnano())
+    .pipe(gulp.dest('./dist/css'));
+});
+
 gulp.task('watch', ['js-watch', 'sass-watch'], function() {
     console.log(' --- Watching CSS & JS files --- ');
 });
 
 gulp.task('build', ['js-build', 'sass-build'], function() {
     console.log(' --- Finished Building CSS & JS files --- ');
+});
+
+gulp.task('minify', ['css-minify', 'js-uglify', 'minify-images'], function() {
+    console.log(' --- Finished Minifying CSS & JS files --- ');
 });
