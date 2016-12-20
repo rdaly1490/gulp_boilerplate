@@ -3,7 +3,7 @@ Quick, basic gulp boilerplate with browserify, sass compiling, and express serve
 
 ##Setup and usage:
 1. Make sure you have Node installed.  You can check in the terminal by typing `node -v`
-2. Navigate to the gulp_boilerplate project folder.  If you saved it to your desktop `cd ~/Desktop/gulp_boilerplate` should get you there.
+2. Navigate to the gulp_boilerplate project folder.  If you saved it to your desktop `cd ~/Desktop/gulp_boilerplate` should get you there on Mac.
 3. Type `npm install`.  This will install all required node modules.
 4. Open a second terminal window and navigate to the project folder there as well.
 5. In the first terminal window type `npm start`.  This will start a server listening on localhost:3000.
